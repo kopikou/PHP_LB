@@ -1,0 +1,28 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+  <h1>ЛЕДИ БАГ И СУПЕР КОТ</h1>
+
+  <div class="mb-4">
+      Адриан и Маринетт - старшеклассники, почти как все остальные. <br>
+      При малейшей угрозе Парижу они становятся Леди Баг и Супер-котом. <br>
+      Их миссия - захватить акум (тёмных бабочек), которые превращают людей в суперзлодеев. <br>
+      Когда герои объединяются, каждый из них не знает истинной личности другого. <br>
+      Маринетт не знает, что Супер-кот на самом деле Адриан, а Адриан не знает,
+      что под маской супер-героини скрывается милая и ветреная одноклассница. <br>
+  </div>
+
+  <div class="mb-4">
+  <img src="/img/logo.webp" alt="">
+  </div>
+  
+  <ol class="list-group">
+  {% for item in menu_items %}
+    <li class="list-group-item list-group-item-dark d-flex align-items-center mb-2">
+      <a class="btn btn-danger  me-3" href="/{{item.url_title}}" role="button">{{item.title}}</a>
+      <a href="/{{item.url_title}}/image" class="me-3">Картинка</a>
+      <a href="/{{item.url_title}}/info">Описание</a>
+    </li>
+  {% endfor %}
+  </ol>
+{% endblock %}

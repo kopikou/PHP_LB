@@ -1,0 +1,28 @@
+body{
+    background-image: url("/img/back.jpg");
+    color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+.container-bg{
+    background-color: black;
+    height: auto;
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+.red .nav-item .active{
+    background-color: red;
+}
+.red .nav-item .nav-link{
+    color: white;
+}
+.list-group .list-group-item a{
+    color: white;
+}
+.list-group .list-group-item{
+    background-color: rgb(41, 40, 40);
+}
+.btn-link{
+    color: white;
+}

@@ -1,0 +1,14 @@
+
+{% macro btn(text, url, value, type) %}
+ 
+{% if value %}
+    <a href="{{url}}" class="btn btn-{{type}}">{{text}}</a>
+{% else %}
+    <a href="{{url}}" class="btn btn-link">{{text}}</a> 
+{% endif %}
+<Style>
+    .btn-link{
+        color: white;
+    }
+</Style>
+{% endmacro %}

@@ -1,0 +1,24 @@
+{% import "button.twig" as macros %}
+{% from "button.twig" import btn %}
+{% extends "__layout.twig" %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<ul class="nav nav-pills red mb-4">
+  <li class="nav-item">
+    {{ macros.btn('Картинка', '/' ~ url_title ~ '/image', is_image ? 'active', 'danger') }}
+  </li>
+  <li class="nav-item">
+    {{ macros.btn('Описание', '/' ~ url_title ~ '/info', is_info ? 'active', 'danger') }}
+  </li>
+
+</ul>
+
+<div class="container container-bg"> 
+    <div class="mb-4">
+        {% block objectContent %}
+
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}
