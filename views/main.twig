@@ -16,13 +16,36 @@
   <img src="/img/logo.webp" alt="">
   </div>
   
-  <ol class="list-group">
-  {% for item in menu_items %}
-    <li class="list-group-item list-group-item-dark d-flex align-items-center mb-2">
-      <a class="btn btn-danger  me-3" href="/{{item.url_title}}" role="button">{{item.title}}</a>
-      <a href="/{{item.url_title}}/image" class="me-3">Картинка</a>
-      <a href="/{{item.url_title}}/info">Описание</a>
-    </li>
-  {% endfor %}
-  </ol>
+
+  <div class="row  ">
+    {% for object in heroes %}
+      <div class="block position-relative">  
+        <div class="position-absolute" style="right: 4px; top: 4px">
+          <form action="/heroes/{{object.id}}/delete" method="post">
+            
+            <button type="submit" class="btn btn-danger">
+              <i class="fas fa-times"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="position-absolute" style="left: 4px; top: 4px">
+          <form action="/heroes/{{object.id}}/edit" method="get">
+            
+            <button  class="btn btn-secondary">
+              <i class="fa-regular fa-pen-to-square"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="main-image-wrapper"><img class = "img_main" src="{{object.image}}" alt=""></div>      
+        <div><a class="btn btn-danger" href="/heroes/{{object.id}}">{{object.title}}</a></div>
+        <div class="link_main">
+          <a href="/heroes/{{object.id}}?show=image" class="me-3">Картинка</a>
+          <a href="/heroes/{{object.id}}?show=info">Описание</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
 {% endblock %}

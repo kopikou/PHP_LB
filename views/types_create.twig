@@ -1,0 +1,30 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+    <h1>Добавление типа персонажа из "Леди Баг и Супер Кот"</h1>
+    <hr>
+
+
+    {% if message %}
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
+    {% endif %}
+    
+
+    <form action="" method="post" enctype="multipart/form-data" class="row g-3" >
+        <div class="col-4">
+            <label class="form-label">Название</label>
+            <input type="text" class="form-control" name="title">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Картинка</label>
+            <input class="form-control" type="file" name="image">
+            <input class="form-control" type="text" name="image1">
+        </div>
+        <div class="col-12 text-end">
+            <button type="submit" class="btn btn-danger">Добавить</button>
+        </div>
+    </form>
+
+{% endblock %}

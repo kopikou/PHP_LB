@@ -4,12 +4,13 @@
 
 {% block content %}
 <h1>{{title}}</h1>
+{{description}}
 <ul class="nav nav-pills red mb-4">
   <li class="nav-item">
-    {{ macros.btn('Картинка', '/' ~ url_title ~ '/image', is_image ? 'active', 'danger') }}
+    {{ macros.btn('Картинка', '/heroes/' ~ id ~ '?show=image', image ? 'active', 'danger') }}
   </li>
   <li class="nav-item">
-    {{ macros.btn('Описание', '/' ~ url_title ~ '/info', is_info ? 'active', 'danger') }}
+    {{ macros.btn('Описание', '/heroes/' ~ id ~ '?show=info', info ? 'active', 'danger') }}
   </li>
 
 </ul>

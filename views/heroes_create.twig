@@ -1,0 +1,46 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+    <h1>Добавление героя из "Леди Баг и Супер Кот"</h1>
+    <hr>
+
+
+    {% if message %}
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+        <a href="/heroes/{{id}}">Открыть новый объект</a>
+    </div>
+    {% endif %}
+    
+
+    <form action="" method="post" enctype="multipart/form-data" class="row g-3" >
+        <div class="col-4">
+            <label class="form-label">Название</label>
+            <input type="text" class="form-control" name="title">
+        </div>
+        <div class="col-4">
+            <label class="form-label">Краткое описание</label>
+            <input type="text" class="form-control" name="description">
+        </div>
+        <div class="col-4">
+            <label class="form-label">Тип</label>
+            <select class="form-control" name="type">
+                {% for type in types %}
+                <option value="{{type.id}}">{{type.title}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Картинка</label>
+            <input class="form-control" type="file" name="image" >
+            <input class="form-control" type="text" name="image1" >
+        </div>
+        <div class="col-12">
+            <textarea name="info" placeholder="Полное описание..." class="form-control" rows="5"></textarea>
+        </div>
+        <div class="col-12 text-end">
+            <button type="submit" class="btn btn-danger">Добавить</button>
+        </div>
+    </form>
+
+{% endblock %}

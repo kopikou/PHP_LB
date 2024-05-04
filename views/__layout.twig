@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#"><i class="fa-solid fa-bug"></i></a>
+            <a class="navbar-brand" href="/"><i class="fa-solid fa-bug"></i></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,11 +21,19 @@
                 <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/">Главная</a>
                 </li>
+                {% for type in types %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/?type={{ type.id }}">{{ type.title|title }}</a>
+                    </li>
+                {% endfor %}
                 <li class="nav-item">
-                <a class="nav-link" href="/LadyBug">Леди Баг</a>
+                    <a class="nav-link" href="/search">Поиск</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="/CatNoir">Супер Кот</a>
+                    <a class="nav-link" href="/heroes/create">Добавить персонажа</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/heroes/createtype">Добавить тип</a>
                 </li>
             </ul>
             </div>
