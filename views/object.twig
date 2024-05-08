@@ -3,6 +3,14 @@
 {% extends "__layout.twig" %}
 
 {% block content %}
+Сообщение из сессии: {{my_session_message}}
+<hr>
+Последние Сообщения: <br>
+{% for m in messages %}
+  {{m}} <br>
+{% endfor %}
+<hr>
+
 <h1>{{title}}</h1>
 {{description}}
 <ul class="nav nav-pills red mb-4">

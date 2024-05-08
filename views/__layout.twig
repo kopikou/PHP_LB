@@ -37,12 +37,31 @@
                 </li>
             </ul>
             </div>
+            <form action="/set-welcome/">
+                <input type="text" name="message" class="form-control">
+            </form>
+            <form action="/logout">
+                <button type="submit" class="btn btn-danger">Выйти</button>
+            </form>
+            
         </div>
     </nav>
+
     <div class="container container-bg">
-    {% block content %}
-        пустота
-    {% endblock %}
+        <div class="row  align-items-start">
+            <div class="col-8">
+                {% block content %}
+                    пустота
+                {% endblock %}
+            </div>
+            <div class="col-4">               
+                Недавно просмотренные страницы: <br>
+                {% for p in pages %}
+                    <div class="visit-pages">{{p}}</div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
+
 </body>
 </html>

@@ -4,7 +4,12 @@ body{
     font-size: 20px;
     text-align: center;
 }
+.visit-pages{
+    box-shadow: 0 0 4px white;
 
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+}
 .container-bg{
     background-color: black;
     height: auto;

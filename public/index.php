@@ -11,6 +11,9 @@
     require_once "../controllers/HeroesUpdateController.php";
     require_once "../controllers/TypesCreateController.php";
     require_once "../middlewares/LoginRequiredMiddleware.php";
+    require_once "../controllers/SetWelcomeController.php";
+    require_once "../controllers/LoginController.php";
+    require_once "../controllers/LogoutController.php";
     //require_once "../controllers/ImageController.php";
     //require_once "../controllers/InfoController.php";
 
@@ -32,18 +35,25 @@
     $pdo = new PDO("mysql:host=localhost;dbname=lb_cn;charset=utf8", "root", "");
 
     $router = new Router($twig, $pdo);
-    $router->add("/", MainController::class);
-    $router->add("/heroes/(?P<id>\d+)", ObjectController::class); 
+    $router->add("/", MainController::class)
+        ->middleware(new LoginRequiredMiddleware());
+    $router->add("/heroes/(?P<id>\d+)", ObjectController::class);
+        //->middleware(new LoginRequiredMiddleware());
     $router->add("/search", SearchController::class);
-    $router->add("/heroes/create", HeroesCreateController::class)
-        ->middleware(new LoginRequiredMiddleware());
+        //->middleware(new LoginRequiredMiddleware());
+    $router->add("/heroes/create", HeroesCreateController::class);
+        //->middleware(new LoginRequiredMiddleware());
     //$router->add("/heroes/delete", HeroesDeleteController::class);
-    $router->add("/heroes/(?P<id>\d+)/delete", HeroesDeleteController::class)
-        ->middleware(new LoginRequiredMiddleware());
-    $router->add("/heroes/(?P<id>\d+)/edit", HeroesUpdateController::class)
-        ->middleware(new LoginRequiredMiddleware());
-    $router->add("/heroes/createtype", TypesCreateController::class)
-        ->middleware(new LoginRequiredMiddleware());
+    $router->add("/heroes/(?P<id>\d+)/delete", HeroesDeleteController::class);
+        //->middleware(new LoginRequiredMiddleware());
+    $router->add("/heroes/(?P<id>\d+)/edit", HeroesUpdateController::class);
+        //->middleware(new LoginRequiredMiddleware());
+    $router->add("/heroes/createtype", TypesCreateController::class);
+        //->middleware(new LoginRequiredMiddleware());
+    $router->add("/set-welcome/", SetWelcomeController::class);
+    $router->add("/login", LoginController::class);
+    $router->add("/logout", LogoutController::class);
+
 
 
     $router->get_or_default(Controller404::class);

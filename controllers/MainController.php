@@ -27,8 +27,6 @@ class MainController extends BaseHeroesTwigController {
         }else{
             $query = $this->pdo->query("SELECT * FROM heroes");
         }
-
-        
         
         $context['heroes'] = $query->fetchAll();
 
