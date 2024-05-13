@@ -17,7 +17,6 @@ class LoginController extends BaseHeroesTwigController {
             $_SESSION["is_logged"] = true;
             header("Location: /");
             exit;
-            //$this->get($context);
         }else{
             $_SESSION["is_logged"] = false;
             $this->get($context);
