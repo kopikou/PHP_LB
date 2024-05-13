@@ -34,22 +34,25 @@
 
     $pdo = new PDO("mysql:host=localhost;dbname=lb_cn;charset=utf8", "root", "");
 
+    session_set_cookie_params(60 * 60 * 10);
+    session_start();
+
     $router = new Router($twig, $pdo);
     $router->add("/", MainController::class)
         ->middleware(new LoginRequiredMiddleware());
-    $router->add("/heroes/(?P<id>\d+)", ObjectController::class);
-        //->middleware(new LoginRequiredMiddleware());
-    $router->add("/search", SearchController::class);
-        //->middleware(new LoginRequiredMiddleware());
-    $router->add("/heroes/create", HeroesCreateController::class);
-        //->middleware(new LoginRequiredMiddleware());
+    $router->add("/heroes/(?P<id>\d+)", ObjectController::class)
+        ->middleware(new LoginRequiredMiddleware());
+    $router->add("/search", SearchController::class)
+        ->middleware(new LoginRequiredMiddleware());
+    $router->add("/heroes/create", HeroesCreateController::class)
+        ->middleware(new LoginRequiredMiddleware());
     //$router->add("/heroes/delete", HeroesDeleteController::class);
-    $router->add("/heroes/(?P<id>\d+)/delete", HeroesDeleteController::class);
-        //->middleware(new LoginRequiredMiddleware());
-    $router->add("/heroes/(?P<id>\d+)/edit", HeroesUpdateController::class);
-        //->middleware(new LoginRequiredMiddleware());
-    $router->add("/heroes/createtype", TypesCreateController::class);
-        //->middleware(new LoginRequiredMiddleware());
+    $router->add("/heroes/(?P<id>\d+)/delete", HeroesDeleteController::class)
+        ->middleware(new LoginRequiredMiddleware());
+    $router->add("/heroes/(?P<id>\d+)/edit", HeroesUpdateController::class)
+        ->middleware(new LoginRequiredMiddleware());
+    $router->add("/heroes/createtype", TypesCreateController::class)
+        ->middleware(new LoginRequiredMiddleware());
     $router->add("/set-welcome/", SetWelcomeController::class);
     $router->add("/login", LoginController::class);
     $router->add("/logout", LogoutController::class);
